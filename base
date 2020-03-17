@@ -1,0 +1,81 @@
+一. 基 本 操 作 :
+
+
+    import pandas as pd
+
+    help(pd) 无帮助的文档
+
+
+
+二. Series
+
+    单列
+
+    1 维数组,就是竖向的,只有 y轴id号
+
+    (1)列 表 创 建 :
+        
+        res = pd.Series([1,2,3,4,5])
+
+
+    (2) dict 创建
+
+        res = pd.Series({'a':1,'b',2})
+
+        key = left_id
+
+
+    (3) 某些序列函数创建Series (例如可迭代对象)
+
+        res = pd.Series(range(10),index=['a','b','c'])
+
+        那么只有 值全都是 10, 有3行,id是 a b c
+
+
+    (4) tuple   创建
+
+        res= pd.Series((1,2,3),index=[1,2,3])
+
+
+    (5) index
+
+        res = pd.Series([1,2],index=['a','b'])
+
+        指定左侧 id
+
+        同时可以根据左侧id找到元素
+
+
+三. DataFrame
+
+
+    2 维数组,竖向和横向,在单列基础上,增加数组元素,横向展示.
+
+    数组内每套一个数组,就是一行.
+
+    pd.DataFrame([[1,2,3],[4,5,6]])
+
+    (1)
+        
+    res = pd.DataFrame([[2,4,6,8],[10,12,14,16]])
+
+       0  1  2  3  
+
+    0  2  4  6  8  
+        
+    1  10 12 14 16
+
+    res[0] = 2    res[0][1] = 12
+
+            12
+
+    索引获取数据 获取的是列中的内容
+
+    获取一行的数据 使用 res.loc[]
+
+
+四. Panel
+
+    3 维数据
+
+
