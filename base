@@ -5,77 +5,220 @@
 
     help(pd) 无帮助的文档
 
+    
 
-
-二. Series
-
-    单列
-
-    1 维数组,就是竖向的,只有 y轴id号
-
-    (1)列 表 创 建 :
-        
-        res = pd.Series([1,2,3,4,5])
-
-
-    (2) dict 创建
-
-        res = pd.Series({'a':1,'b',2})
-
-        key = left_id
-
-
-    (3) 某些序列函数创建Series (例如可迭代对象)
-
-        res = pd.Series(range(10),index=['a','b','c'])
-
-        那么只有 值全都是 10, 有3行,id是 a b c
-
-
-    (4) tuple   创建
-
-        res= pd.Series((1,2,3),index=[1,2,3])
-
-
-    (5) index
-
-        res = pd.Series([1,2],index=['a','b'])
-
-        指定左侧 id
-
-        同时可以根据左侧id找到元素
-
-
-三. DataFrame
-
-
-    2 维数组,竖向和横向,在单列基础上,增加数组元素,横向展示.
-
-    数组内每套一个数组,就是一行.
-
-    pd.DataFrame([[1,2,3],[4,5,6]])
-
-    (1)
-        
-    res = pd.DataFrame([[2,4,6,8],[10,12,14,16]])
-
-       0  1  2  3  
-
-    0  2  4  6  8  
-        
-    1  10 12 14 16
-
-    res[0] = 2    res[0][1] = 12
-
-            12
-
-    索引获取数据 获取的是列中的内容
-
-    获取一行的数据 使用 res.loc[]
-
-
-四. Panel
+二. Panel
 
     3 维数据
 
 
+
+三. 查 看 : 
+
+
+    <1> index
+
+        获取 index
+
+        语 法 : object.index
+
+        (1) 获取全部 object.index
+
+        (2) 获取个别 object.index[]
+
+        (3) 获取区间 object.index[2:4]
+
+    <2> values
+
+        获取 values
+
+        语 法 : object.values
+
+        (1) 获取全部 object.index
+
+        (2) 获取个别 object.index[]
+
+        (3) 获取区间 object.index[2:4]
+
+
+    <3> 多 值 查 询 :
+
+        object[[0,2,4]] 下标查询
+        或
+        object[[index]] 索引查询
+
+        注意双中括号
+
+    <4> in 判断 custom_index
+
+        判断 自定义索引 在不在对象的 索引中
+
+        'a' in object
+
+        return True or False
+
+    <5> in 判断 values
+
+        判断 值 在不在 对象的 values中
+
+        2 in object.values
+
+    <6> head() tail()
+
+        类似 limit 默认是5条
+
+    <7> shape
+
+        获取视图 有多少行 和 多少列
+
+        获取行数 和 列数
+
+    <8> dtypes
+
+        获取 列的数据类型
+
+    <9> 条件判断后 实例化时 :
+
+        True 变为原数据 , False 变为 NaN
+
+
+   <10> object.dropna(how='any')
+
+        参数 how='any' ,一行中只要有 NaN,就删这一行
+
+        参数 how='all', 一行里都是   NaN,才删这一行
+
+        不会修改原 视图,需要用返回值接收才有结果
+
+   <11> b = a.copy()
+
+        对b进行修改,会修改 b 视图的内容.或新搞出来的对象,随处都可修改新对象.
+
+        (用pd.DataFrame创建的列表,永远不会被修改)
+
+   <12> -(tmp['money']>10000)
+
+        将 -() 内的 True False 反转
+
+   <13> name
+
+        命名属性在Pandas对象转换和分组等应用中常用
+
+        object.name
+
+
+四. 函 数 操 作 :
+
+
+    <1> reshape(4,5)
+
+        参数1 为行,参数2 为列
+
+        通 常 : np.arange(20).reshape(4,5) 4行5列.
+
+        注 意 : 4 * 5 must = 20
+
+
+    <2> pd.date_range(20200125,periods=10)
+
+        periods = 10 往后10天
+
+        return DatetimeIndex(['2020-01-25','2020-01-26',...])
+
+
+    <3> shift()
+
+        object.shift(1)
+
+        所有行 向下挪 指定参数次
+
+        Series 和 DataFrame 均可用
+
+
+
+        
+
+五. 读 取 文 件 获 得 对 象 :
+
+
+  存 储 CSV 格 式 :
+
+    <1> df = pd.read_csv('PATH')
+
+        csv文件 是数据之间以 ',' 分隔
+
+        pd.read_csv('z.csv',header=None,index_col=0,nrows=3,
+                     usecols=[0],skiprows=2)
+
+        参 数 :
+
+            1. 文件路径
+
+            2. sep='' 指定分隔符
+
+            3. header=0 列索引,默认是0,将第一行设为表头.
+               或将指定行设为表头,=None将不设表头
+
+            4. names['a','b'] 不使用csv的表头,自定义表头,配合header=None使用
+
+            5. index_col 指定哪列作为 index,=None不设索引
+
+            6. nrows=3 读取前几行
+
+            7. skiprows=2 跳过几行
+
+            8. usecols=[1,2] 读取哪列 (必为列表)
+
+            9. skipfooter=2 从表格末尾算起忽略的行,必须配合engin='python'
+               否则会报警告
+
+           10. engine='c' c更快,python更完善
+
+           11. na_values=[] 将csv文件中的某些字符替换为空值 
+
+        时间相关参数 :
+
+            1. 文件路径
+            2. parse_dates=[['date','time']]将两列合并为时间格式,默认列名合并_
+            3. parse_dates={'s':['date','time']} 将两列合并解析为时间,自定义列名
+            4. keep_date_col=True 保留合并前的列
+            5. index_col='s' 将某列设为行索引
+
+    <2> df.to_csv('PATH',index=False,header=False,
+    
+        colums=['name','c','a'],encoding='utf-8')
+
+
+
+  存 取 Excel (xlsx) :
+
+    import openpyxl
+
+    import xlrd
+
+    写 入 :
+    <1> df.to_excel('PATH',header=False,index=False) 默认存索引和列名
+
+        df.to_excel('PATH','Sheet1') 自定义工作表表明,默认Sheet1
+
+        df.to_excel('PATH',sheet_name='Sheet1') 和第二条结果相同
+
+    <2> 多个 变量写入一个文件 :
+
+        创建文件对象 : writer = pd.ExcelWriter('output.xlsx')
+
+        写入第一个图 : df.to_excel(writer,'Sheet1')
+
+        写入第二个图 : d2.to_excel(writer,'Sheet2')
+
+        保存文件 : writer.save()
+
+    读 取 :
+
+        参数和 csv 的大致相同 (参数sheetname='')
+
+    <1> pd.read_excel('output.xlsx','Sheet1')
+
+    <2> 有多个表读取一个:
+
+        pd.read_excel('output.xlsx',None)['Sheet1']

@@ -1,0 +1,54 @@
+一. 条 件 :
+
+    < <= > >= !=  & | !=
+
+
+二. 过 滤 :
+
+
+    <1> > < <= >=
+
+        object < 3
+
+        判断所有 values 哪个小于3
+
+        符合返回True,不符合False (True False)
+
+
+    <2> object[object>3]
+
+        找到 对象中 >3 的数据
+
+        实例化 (符合为 原数据,不符合为 Nan)
+
+
+    <3> 过 滤 查 询 :
+
+         object['money']>10000
+
+         return 布尔值 (符合True 不符合False)
+
+
+     <4> 返回 Dataframe 对象
+
+         把 布尔值结果 作为 object 的参数,进行实例化
+
+         object[object['money']>10000]
+
+         return 符合条件的 所有行 和 所有列
+
+
+     <5> a.loc[a['money']>60,'address':]
+
+         loc[行,列]
+
+         object[列]
+
+
+     <6> isin() 过滤
+
+         a['address'].isin(['北京海淀','深圳南山'])
+
+         return True or False
+
+         a[] 再用 对象[] 套上,完成过滤,得到 True 的结果

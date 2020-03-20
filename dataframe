@@ -1,0 +1,186 @@
+一. DataFrame 基 本 概 念 :
+
+
+    2 维数组,多行多列
+
+    竖向和横向,在单列基础上,增加数组元素,横向展示.数组内每套一个数组,就是一行.
+
+        res = pd.DataFrame([[2,4,6,8],[12,14,16,18]])
+
+           0  1  2  3
+
+        0  2  4  6  8
+
+        1  12 14 16 18
+
+        index   代表 行
+
+        columns 代表 列
+
+        指定 index and colums 语 法 :
+
+        res = pd.DataFrame([[1,2],[2,3]],index=['a','b'],columns=['c','d'])
+
+    <1> index.name
+
+        为索引取名字
+
+    <2> columns.name
+        
+        为列取名字
+
+
+二. 创 建 : 
+
+
+    <1> pd.DataFrame([],[],[])
+
+        中包括多个 Series就是 DateFram
+
+
+三. 添 加 :
+
+
+    <1> add columns
+
+        object[new] = [] 单个或多个元素
+
+    <2> add loc
+
+        object.loc[6] = [] 单个或多个元素
+
+
+
+四. 删 除 :
+
+    
+    inplace 修改原视图 drop(index,inplace=True)
+
+    axis    drop行或列 0 为行, 1 为列
+
+    
+
+    <1> 单行
+
+        object.drop(index)
+
+    <2> 多行
+
+        object.drop([1,5])
+    
+    <3> 单列
+
+        axis=1删除列,默认axis=0删除行
+
+        object.drop(columns,axis=1)
+
+    <4> 多列
+
+        axis=1删除列,默认axis=0删除行
+        
+        object.drop([1,5],axis=1)
+
+
+
+五. 修 改 :
+
+
+
+六. 查 看 :
+
+
+    <1> object[]
+
+        直接索引 [] return 参数只能为列
+
+        return 列全部,或做切片等等.
+
+
+    <2> loc[] 标签索引
+
+        无标签默认有 id索引,可以用 id索引.
+
+        有标签时,不能用 id索引.
+
+        1.获 取 一 行 的 数 据 :
+
+            res.loc[index]
+
+        2.多个指定行 的数据:
+
+            res.loc[[1,2,3]]
+
+        3. [:] 切片查询
+
+                object[0:1] 查询第一行
+
+        4. object.loc[0:5,'money']
+
+           查行信息,并指定字段的 语法
+
+        5. object.loc[0:5,1:2]
+
+           先 0:5 行切片,再 1:2 列切片
+
+
+    <3> iloc[] 下标索引
+
+        有标签时也可用id索引.
+
+        iloc[1:5]
+
+        查询行,并指定查询字段:
+
+        object.iloc[0:5,'money']
+
+
+    <4> info()
+
+        object.info()
+
+        查看视图的信息,可由此 判断空值相关的内容
+
+
+    <5> values
+
+        object.values
+
+        获取所有行的信息
+
+        object.values[0][1]
+
+
+    <6> index
+
+        object.index
+
+        获取索引
+
+
+    <7> columns
+
+        object.columns
+
+        获取所有列名
+
+
+    <8> describe()
+
+        快速统计结果:计数,均值,标准差,最大值,四分位数,最小值
+
+
+    <9> at 和 iat 只能获取单个值,在这种情况下,效率比 loc 和 iloc更好
+
+
+
+七. 遍历 DataFrame :
+
+    
+    for index,row in object.iterrows():
+
+        print(index)    
+        print(row)  打印索引 和 row名 和 每行全部信息.
+
+        print(row[3])  打印指定信息.
+
+

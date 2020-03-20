@@ -1,0 +1,152 @@
+一. Series 基本概念 :
+
+    单 列
+
+    1 维数组,就是竖向的,只有 y轴id号
+
+    + - * / & | < > <= >= != 
+
+    <1> name 属性
+
+        Series对象自身和它的索引都有一个命名属性:name
+
+        object.name = ''
+
+    <2> index.name 属性
+
+        为 索引添加 名字
+
+        object.index.name = ''
+        
+
+二. 创 建 :
+
+
+    <1> 列 表 创 建 :
+    
+        res = pd.Series([1,2,3,4,5])
+
+
+    <2> dict 创建
+
+        res = pd.Series({'a':1,'b',2})
+
+        key = left_id
+
+
+    <3> 某些序列函数创建Series (例如可迭代对象)
+
+        res = pd.Series(range(10),index=['a','b','c'])
+
+        那么只有 值全都是 10, 有3行,index 是 a b c
+
+
+    <4> tuple   创建
+
+        res= pd.Series((1,2,3),index=[1,2,3])
+
+  参 数 :
+
+    <1> index
+
+        object.Series([1,2],index=['a','b'])
+
+        指定左侧的 index ,并可通过 index 查找数据
+
+
+
+三. 添 加 :
+
+    
+    <1> object[new] = new
+
+    <2> object['str'] = 'str'
+
+        原本是数字的,添加了 字符串 , 类型变为 object. 
+
+
+四. 删 除 :
+
+
+    <1> object.drop(index)
+
+
+
+五. 修 改 :
+
+    
+    <1> 单 个 修 改 :
+
+        =    
+
+    <2> 多 个 修 改 :
+
+        =[1,2,3,4]
+
+    <3> + - * /
+        
+        数值对象 - 1
+
+    <4> index
+
+        object.index = []
+
+        单个元素为全部修改为相同,应该给多个元素.
+
+
+
+六. 查 : 
+
+
+    <1> get
+
+        object.get(index,other)
+
+        查找 index,无值返回 other的内容
+
+    <2> shape
+
+        获取 Series 的行数
+
+        object.shape
+
+    <3> :
+
+        object[0:5]
+
+        找 0 至 5 行
+
+    <4> index
+
+        object.index
+
+    <5> values
+
+        object.values
+
+    <6> []
+
+        object[3]           第3行
+
+        object[3:6]         3,4,5行(左闭右开)
+
+        object.loc[[1,2]]   第1行和第二行
+
+    <7> in 
+
+        my_values in object
+
+        return True or False
+
+    <8> dtypes
+
+        object.dtypes
+
+        获取类型 (Series 无 info())
+
+    <9> describe()
+
+        获取:计数,均值,标准差,最大值,四分位数,最小值
+
+        object.describe()
+

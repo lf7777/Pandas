@@ -1,0 +1,196 @@
+一. 数 据 运 算 :
+
+
+矢 量 运 算 函 数 :
+
+    map()      对Series的每个 元素 进行函数 矢量运算  
+
+    apply()    对DataFrame的 指定行或列 进行函数 矢量运算
+
+    applymap() 对DataFrame的每个 元素 进行函数 矢量运算
+
+
+通 用 参 数 :
+    
+    参数0 或 空 : 计算列
+
+    参数1       : 计算行
+
+
+准 则 :
+
+    二视图进行运算,运算依据是 index 和 column
+
+
+    <1> mean()
+
+        求 平均数
+
+
+    <2> median()
+
+        找 中位数
+
+
+    <3> mode()
+
+        找 众数
+
+
+    <4> var()
+
+        求 方差
+
+
+    <5> std()
+
+        求 标准差
+
+
+    <6> object.min() 
+    
+        求最小值
+
+
+    <7> object.max() 
+    
+        求 最大值
+
+
+    <8> object.sum()
+
+        计算数据的综合
+
+        参数0 或 空 : 计算列
+
+        参数1       : 计算行
+
+
+    <9> object.count()
+
+        计算 非NaN值数量
+
+        参数0 或 空 : 计算列
+
+        参数1       : 计算行
+
+
+   <10> object.idxmin()
+
+        计算出 最小值 对应的 index 
+
+        参数0 或 空 : 计算列
+
+        参数1       : 计算行
+
+        如参数为 1 ,计算每行最小值对应的 column
+
+
+   <11> object.idxmax()
+
+        计算出 最大值 对应的 index
+
+        参数0 或 空 : 计算列
+
+        参数1       : 计算行
+
+        如参数为 1 ,计算每行最大值对应的 column
+
+
+   <12> describe()
+
+        快速统计结果:计数,均值,标准差,最大值,四分位数,最小值
+
+
+
+二. +-*/ 的 方 法 式 运 算 : (可增加参数)
+
+
+    add() 加法
+
+    sub() 减法
+
+    mul() 乘法
+
+    div() 除法
+
+
+    详 见 数据运算的 jupyter-notebook
+
+    <1> .add(d,**argws)
+
+        类型间的 加法 运算,可选参数
+
+        参 数 : fill_value
+
+    <2> .sub(d,**argws)
+
+        类型间的 减法 运算,可选参数
+
+        参 数 : fill_value
+
+    <3> .mul(d,**argws)
+
+        类型间的 乘法 运算,可选参数
+
+        参 数 : fill_value
+
+    <4> .div(d,**argws)
+        
+        类型间的 除法 运算,可选参数
+
+        参 数 : fill_value
+
+
+
+三. 不 同 维 度 的 运 算 (Series 运算 DataFrame)
+
+    见 operation jupyter-notebook 
+
+
+四. 比 较 运 算 法 则 :
+
+    见 operation jupyter-notebook 
+
+
+五. 累 计 运 算 :
+
+    见 operation jupyter-notebook 
+
+    cumsum(axis=1) 默认列累加, axis=1 行累加
+
+    <1> .cumsum()    累加和
+
+    <2> .cumprod()   累加积
+
+    <3> .cummax()    累加最大值
+
+    <4> .cummin()    累加最小值
+
+
+六. 滚 动 计 算 :
+
+
+    <1> .rolling(num).sum()
+
+        向上找 num 个,计算 和 (找不到就是NaN)
+
+
+    <2> .rolling(num).mean()
+
+        向上找 num 个,计算 平均数 (找不到就是NaN)
+
+
+    <3> .rolling(num).var()
+
+        向上找 num 个,计算 方差 (找不到就是NaN)
+
+
+    <4> .rolling(num).std()
+
+        向上找 num 个,计算 标准差 (找不到就是NaN)
+
+
+    <5> .rolling(num).min() or .max()
+
+        向上找 num 个,计算 最小值 最大值 (找不到就是NaN)
