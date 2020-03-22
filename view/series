@@ -150,3 +150,6 @@
 
         object.describe()
 
+    <10>.value_counts()
+
+        查询 Series 中每个数据的个数

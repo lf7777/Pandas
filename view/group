@@ -1,0 +1,16 @@
+一. groupby : (分组) 
+
+    
+    object.groupby('column')
+
+        return 地址
+    
+    示 例 :  object.groupby('sex').sum()
+
+
+二. 多 列 分 组 :
+
+
+    满足 这多列 内容相同的 则分为一组
+
+    object.groupby(['A','B']).sum()

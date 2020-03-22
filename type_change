@@ -1,0 +1,48 @@
+一. 三 种 转 换 基 本 方 法 :
+
+    <1> astype()
+
+        object.astype('int')
+
+
+    <2> 自定义函数
+
+
+    <3> to_numeric()
+
+        pd.to_numeric(data[''],errors='coerce')
+
+            转换为数字类型
+
+
+    <4> to_datetime()
+
+        pd.to_datetime(data[['day','month',year'']])
+
+            把单独的日期合并到一起
+
+
+
+二. 自 定 义 函 数 :
+
+
+    <1> data[''].apply(lambda x:x.replace('$','').replace(',','').astype(float))
+
+
+
+三. 读 取 数 据 时 进 行 转 换 :
+
+
+    <1> data = pd.read_csv('data.csv',
+    
+                converters={
+                            
+                            '':str,
+    
+                            '':conver_currency
+                            
+                            '':lambda x:pd.to_numeric(x,errors='coerce')
+
+                            '':lambda x:np.where(x=='Y',True,False)
+
+                            },encoding='utf-8')

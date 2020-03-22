@@ -1,3 +1,14 @@
+准 则 :
+
+    条 件 判 断 后 实 例 化 时 :
+
+        True 会变为原数据 , False 变为 NaN
+
+    -(tmp['money']>10000)
+
+        将 -() 内的 True False 反转
+
+
 一. 条 件 :
 
     < <= > >= !=  & | !=
@@ -29,26 +40,41 @@
          return 布尔值 (符合True 不符合False)
 
 
-     <4> 返回 Dataframe 对象
+    <4> 返回 Dataframe 对象
 
-         把 布尔值结果 作为 object 的参数,进行实例化
+        把 布尔值结果 作为 object 的参数,进行实例化
 
-         object[object['money']>10000]
+        object[object['money']>10000]
 
-         return 符合条件的 所有行 和 所有列
-
-
-     <5> a.loc[a['money']>60,'address':]
-
-         loc[行,列]
-
-         object[列]
+        return 符合条件的 所有行 和 所有列
 
 
-     <6> isin() 过滤
+    <5> a.loc[a['money']>60,'address':]
 
-         a['address'].isin(['北京海淀','深圳南山'])
+        loc[行,列]
 
-         return True or False
+        object[列]
 
-         a[] 再用 对象[] 套上,完成过滤,得到 True 的结果
+
+    <6> isin() 过滤
+
+        a['address'].isin(['北京海淀','深圳南山'])
+
+        return True or False
+
+        a[] 再用 对象[] 套上,完成过滤,得到 True 的结果
+
+    <7> in 判断 custom_index
+
+        判断 自定义索引 在不在对象的 索引中
+
+        'a' in object
+
+        return True or False
+
+    <8> in 判断 values
+
+        判断 值 在不在 对象的 values中
+
+        2 in object.values
+

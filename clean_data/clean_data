@@ -80,6 +80,40 @@ DataFrame :
 
     <3> object.replace({np.nan:1,-100:1})
 
+    <4> obj.str.lower() obj.str.upper()
+
+        转变 大小写
+
+    <5> -object
+
+        如果里面是 数字类型 , 则返回一个新的 -的视图
+
+        正值变负值方法 :
+
+            object[object>0] = - object
+
+        负值变正值方法 :
+
+            object[object<0] = - object
+
+    <6> .T
+
+        行 列 反 转 (行到列的位置,列到行的位置)
+
+
+    <7> .sort_index
+
+        通过 index 排序
+
+        如变降序列 : .sort_index(ascending=False)
+
+
+    <8> .sort_values 
+
+        通过 column 排序    
+
+        如变降序 或 指定 column : .sort_values(by=,ascending=False)
+
 
 三. 数 据 映 射 转 换 索 引 :
 

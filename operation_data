@@ -3,11 +3,11 @@
 
 矢 量 运 算 函 数 :
 
-    map()      对Series的每个 元素 进行函数 矢量运算  
+    map()      对Series的    <每个元素> 进行函数矢量运算  
 
-    apply()    对DataFrame的 指定行或列 进行函数 矢量运算
+    apply()    对DataFrame的 <指定行列> 进行函数矢量运算 (不指定为整体)
 
-    applymap() 对DataFrame的每个 元素 进行函数 矢量运算
+    applymap() 对DataFrame的 <每个元素> 进行函数矢量运算
 
 
 通 用 参 数 :
@@ -59,7 +59,7 @@
 
     <8> object.sum()
 
-        计算数据的综合
+        计算数据的总合
 
         参数0 或 空 : 计算列
 
@@ -97,7 +97,9 @@
         如参数为 1 ,计算每行最大值对应的 column
 
 
-   <12> describe()
+   <12> .describe()
+
+        快速统计数据.(Series 和 DataFrame 均可用)
 
         快速统计结果:计数,均值,标准差,最大值,四分位数,最小值
 
@@ -158,6 +160,12 @@
     见 operation jupyter-notebook 
 
     cumsum(axis=1) 默认列累加, axis=1 行累加
+
+    准 则 : 
+        1. B行的数据 = B行本身 + A行数据 
+        2. C行的数据 = C行本上 + B行数据(此时B行是 B本身+A数据)
+        3. 累加积,累加最大值,累加最小值同理
+        4. 本数据和上个数据做对比,取最大/最小的作为本数据
 
     <1> .cumsum()    累加和
 

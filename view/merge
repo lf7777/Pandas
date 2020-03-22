@@ -1,0 +1,3 @@
+一. 笛 卡 尔 积 两 个 视 图 :
+
+    pd.merge(left,right,on='key')
