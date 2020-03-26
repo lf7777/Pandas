@@ -69,12 +69,12 @@
 
     <3> pd.MultiIndex.from_tuples(tuples,names=['first','second'])
 
-        创建多列索引
+        创 建 多 列 索 引
 
 
     <4> pd.pivot_table(object,index=['A','B'],columns=['C'])
 
-        创建数据透视表
+        创 建 数 据 透 视 表
     
 
 
