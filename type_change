@@ -1,7 +1,7 @@
 一. 三 种 转 换 基 本 方 法 :
 
 
-    <1> astype()  numpy的转换方法
+    <1> astype()  numpy 和 pandas 都有此函数
 
         object.astype('int')
 

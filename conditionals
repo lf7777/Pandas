@@ -62,6 +62,8 @@
 
         return True or False
 
+        .isin([]) 必须是个列表
+
         a[] 再用 对象[] 套上,完成过滤,得到 True 的结果
 
     <7> in 判断 custom_index
