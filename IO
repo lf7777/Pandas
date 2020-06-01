@@ -1,7 +1,20 @@
 读 取 文 件 获 得 对 象 :
 
 
+    最好的读写入方式:
+    
+        读 : obj.to_csv('PATH',index=False) 
+
+        写 : pd.read_csv('PATH')
+
+        不带索引,写入后csv文件只有列名和数据,无索引
+
+        读的时候 直接读,无需要的话不用加任何参数.
+
+
 一. 写 入 CSV 格 式 :
+
+
 
         参 数 : 
             1. 默认带 修改过的 columns 和 indexs
@@ -22,9 +35,6 @@
     pd.read_csv('z.csv',header=None,index_col=0,nrows=3,
                  usecols=[0],skiprows=2)
 
-        默 认 : 
-            1. 不带 
-
         参 数 :
             1. 文件路径
             2. sep='' 指定分隔符 (暂不知作用)
@@ -34,11 +44,11 @@
             5. index_col 指定哪列作为index,index_col=0:指定文件中第一列
             6. nrows=3 读取前几行
             7. skiprows=2 跳过几行
-            8. usecols=[1,2] 读取哪列 (暂没成功,必为列表) 
-            9. skipfooter=2 从表格末尾算起忽略的行,必须配合engin='python'
-               否则会报警告
-           10. engine='c' c更快,python更完善
-           11. na_values=[] 将csv文件中的某些字符替换为空值
+            8. engine='c' c更快,python更完善
+            9. na_values=[] 将csv文件中的某些字符替换为空值
+           10.chunksize=1000 分块读取文件,每次读多少行,不一次性而是多次
+           11.error_bad_lines=False 当某行数据有问题时不报错，直接跳过，处理脏数                                    据时使用
+           12.na_values='NULL' 将NULL识别为空值
 
         时间相关参数 :
             1. 文件路径
@@ -89,37 +99,35 @@
 
 五. 读 MySql :
 
-
-    import pymysql
-
     import pandas pd
 
-    准 则 : 
-        
-        获取到 DataFrame column=field 和 pandas系统分配 index
+    from sqlalchemy import create_engine
 
-    格 式 :
+    创建数据库连接 引擎对象,指定数据库相关信息
+    engine = create_engine('mysql+pymysql://root:pswd@localhost:3306/my_mysql')
 
-    db = pymysql.connect(地址,用户,密码,db='数据库名',charset='utf8mb4')
+    df = pd.read_sql(语句,engine,index_col=''指定谁做index)默认索引为pd提供新的
 
-    sql = 'select ....'
+    sqlalchemy 模块实现了与不同数据库的连接
 
-    df = pd.read_sql(sql语句,con=db指定数据库连接对象)
 
-    db.close()
-
-    示 例: 
-
-    import pymysql
+六. 写入 MySQL
 
     import pandas as pd
 
-    db = pymysql.connect('localhost','root','',db='my_mysql',charset='utf8mb4')
+    from sqlalchemy import create_engine
 
-    sql = 'select * from bb'
+    df.to_sql('tmp',engine,if_exists='append',index=False)
 
-    df = pd.read_sql(sql,con=db)
+        参 数 说 明 :
 
-    print(df)
+                1. tmp 此处是表名
 
-    db.close()
+                2. engine 数据库连接引擎
+
+                3. if_exists = 'append' 追加, 'replace' 替代(建新表)
+
+                4. index = False 写入时带不带索引
+
+
+七. Pandas 连接其他数据库

@@ -14,3 +14,13 @@
     满足 这多列 内容相同的 则分为一组
 
     object.groupby(['A','B']).sum()
+
+
+三. 分 组 后 排 序 :
+
+    
+      <1> .sort_values
+
+        通过 column 排序
+
+        如变降序 或 指定 column : .sort_values(by=,ascending=False)

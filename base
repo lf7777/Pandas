@@ -119,6 +119,9 @@
 
         (4) 获取具体数据 : object.values[0][1]
 
+        .values.reshape(-1,1)
+
+            表示第一维度自定义,第二维度为1,
 
     <4> .reindex()
 
@@ -196,7 +199,7 @@
 
     <2> .dtypes
 
-        获取 列的数据类型
+        获取 列 的数据类型
 
 
 
@@ -234,7 +237,7 @@
 
         通过 index 排序   
 
-        如变降序列 : .sort_index(ascending=False)
+        如变降序 : .sort_index(ascending=False)
 
 
     <2> .sort_values
@@ -283,4 +286,6 @@
 
             object[object<0] = - object
 
+    <5> 显示所有列
 
+        pd.set_option('display.max_columns', None)

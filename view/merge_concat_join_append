@@ -1,0 +1,75 @@
+Merge : 
+
+    两个列表中有 重复且相同的 列,此列做 key,将其他数据合并
+
+Concat :
+
+    想要通过一个或多个视图 挑出想要的 行 或 列 组成新视图时使用
+
+Append :
+
+    要在一个视图中 追加行 时使用 (注意行中每个数据的列名字要相同)
+
+Join : 
+
+    要在一个视图中 追加列 时使用 
+
+
+一. Merge
+
+    自 动 合 并 列 名 相 同 的 数 据
+
+
+    笛 卡 尔 积 两 个 视 图 : 然后匹配相同列名的
+
+    pd.merge(left,right,on='key')  
+
+    on 参数可以忽略,合并两个对象,默认匹配相同过的列名,自动对齐合并
+
+
+二. Concat
+
+
+    <1> 合 并 行 :
+
+        pd.concat([指定行1,指定行2,指定行3])
+
+        返回 新视图
+
+
+    <2> 合 并 列 :
+
+        pd.concat([指定列1,指定列2],axis=1)
+
+        返回 新视图
+
+
+
+三. Append (竖 向 追 加 行)
+
+
+    object.append(willbe_append,ignore_index=True)
+
+    ignore_index    忽视_索引 (意思是不要原索引,自动添加索引,表现为无原索引)
+
+
+    <1> 添加行用 字典 列名 对应 数值:
+
+        obj.append({field:content,field:content},ignore_index=True)
+
+        df.append({'key':'e','data1':6},ignore_index=True)
+
+
+    <2> 两张表添加行数据 需要保证 列名是相同的
+
+        所以基本只能添加 Series,Series的 index 要等于被添加的 columns
+
+
+
+四. Join (横 向 追 加 列)
+
+
+    <1> obj.join(obj2)
+
+
+

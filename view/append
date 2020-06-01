@@ -1,5 +1,0 @@
-一. append (追 加)
-
-    object.append(willbe_append,ignore_index=True)
-
-    ignore_index    忽视_索引 (意思是不要原索引,自动添加索引,表现为无原索引)

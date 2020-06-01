@@ -1,0 +1,59 @@
+一. Dispersed    离 散 化
+
+
+
+二. MetaPlace    元面划分
+
+
+二.1 pd.cut()
+
+    语法1 : 指 定 区 间 
+    
+            cats = pd.cut(data,bins,可选参数labels=['',''])
+            
+
+            bins(箱子) = [10,20,30,40,50]
+            
+            cats 是划分完的箱子对象 类型为 pandas.core.arrays.categorical.Cate..
+
+            labels 可指定区间的名字
+
+    语法2 : 指 定 区 间 份 数
+
+            cats = pd.cut(data,4,precision=1)
+
+
+            中间参数是 份数 ,precision是 小数位数 
+
+    属 性 :
+
+            1. cats.categories
+
+               区间的信息 IntervalIndex 间期 及 closed 和 dtype 
+
+            2. cats.codes
+
+               数据的标签 (所有数据在第几个区间内,返回 array)
+
+    方 法 :
+
+            1. pd.value_counts(cats)
+
+               每个区间的数据量
+
+               返回值类型为 pandas.core.series.Seris
+
+
+二.2 pd.qcut() quantile 分位数
+
+    
+    语 法 : pd.qcut(data,份数)
+
+            因每个分位内的数据数量是相同的,所以系统按照 <分位> 进行划分区间
+
+            得到的每个区间的数据个数相同
+
+
+二.3 pd.get_dummies(cats)
+
+     分箱并做独热编码

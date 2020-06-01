@@ -68,6 +68,10 @@ DataFrame :
         参数 how='all', 一行里都是   NaN,才删这一行
 
         不会修改原 视图,需要用返回值接收才有结果
+
+    <2> object.dropna(subset=['列名字'])
+
+        删除指定列中有空值的行
  
 
 填 充 缺 失 值 :
@@ -76,11 +80,19 @@ DataFrame :
 
         参 数 : 
 
-        value 填充缺失值的标量值
+        value 填充缺失值的标量值,指定列填充指定的内容
+
+            values = {'a':0,'b':1}
+
+            object.fillna(value=values)
+
+            默认不会修改原数据
             
-        inplace 修改调用者对象,不产生副本
+        inplace 修改原数据
 
         method 上缺失值 = 前值或后值 ffill=前值,bfill=后值
+
+            method = 'ffill'
 
         (在二维视图里默认axis=0,赋值为行级别上个或下个(表现为i表现为iii))
 
@@ -132,18 +144,8 @@ DataFrame :
         如变降序 或 指定 column : .sort_values(by=,ascending=False)
 
 
-三. 数 据 映 射 转 换 索 引 :
 
-
-    Series s = [1,2,3,4]    dict d = {1:'a',2:'b',3:'c',4:'d'}
-
-    用 a b c d 替换 1,2,3,4
-
-    s.map(d)    return a b c d 
-
-
-
-四. 去 重 数 据 :
+三. 去 重 数 据 :
 
     <1> .duplicated()
 
@@ -177,10 +179,20 @@ DataFrame :
 
 
 
-五. 检 测 和 过 滤 异 常 值 :
+四. 检 测 和 过 滤 异 常 值 :
     
     过滤或变换异常值(outlier)在很大程度上就是运用数组运算
     
     <1> 
 
         
+五. 数 据 映 射 转 换 索 引 :
+
+
+    Series s = [1,2,3,4]    dict d = {1:'a',2:'b',3:'c',4:'d'}
+
+    用 a b c d 替换 1,2,3,4
+
+    s.map(d)    return a b c d 
+
+

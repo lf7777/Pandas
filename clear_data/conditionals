@@ -80,3 +80,9 @@
 
         2 in object.values
 
+
+    <9> is_unique
+
+        obj.is_unique
+
+        判断对象 中有没有重复
