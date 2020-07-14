@@ -15,19 +15,19 @@ Join :
     要在一个视图中 追加列 时使用 
 
 
-一. Merge
+一. Merge 类似 SQL 的 join 表连接
 
-    自 动 合 并 列 名 相 同 的 数 据
+    自动合并列名相同的数据
 
+    笛卡尔积两个视图 : 然后匹配相同列名的
 
-    笛 卡 尔 积 两 个 视 图 : 然后匹配相同列名的
-
-    pd.merge(left,right,on='key')  
+    pd.merge(left,right,on='key',how='left')  
 
     on 参数可以忽略,合并两个对象,默认匹配相同过的列名,自动对齐合并
 
 
-二. Concat
+
+二. Concat 合并行,axis=1和并列
 
 
     <1> 合 并 行 :
@@ -45,12 +45,12 @@ Join :
 
 
 
-三. Append (竖 向 追 加 行)
+三. Append 追 加 行
 
 
     object.append(willbe_append,ignore_index=True)
 
-    ignore_index    忽视_索引 (意思是不要原索引,自动添加索引,表现为无原索引)
+    ignore_index 忽视_索引 (意思是不要原索引,自动添加索引,表现为无原索引)
 
 
     <1> 添加行用 字典 列名 对应 数值:
@@ -66,7 +66,7 @@ Join :
 
 
 
-四. Join (横 向 追 加 列)
+四. Join 追 加 列
 
 
     <1> obj.join(obj2)

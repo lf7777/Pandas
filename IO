@@ -1,6 +1,3 @@
-读 取 文 件 获 得 对 象 :
-
-
     最好的读写入方式:
     
         读 : obj.to_csv('PATH',index=False) 
@@ -12,9 +9,12 @@
         读的时候 直接读,无需要的话不用加任何参数.
 
 
-一. 写 入 CSV 格 式 :
+    data.sample(frac=0.2,replace=False)
+
+    抽样本，frac抽取比例，replace是否放回
 
 
+一. 写入 CSV 格式 :
 
         参 数 : 
             1. 默认带 修改过的 columns 和 indexs

@@ -145,6 +145,12 @@
 
         参 数 : fill_value
 
+    <5> 设置不显示科学计数法
+
+        pd.set_option('display.float_format', lambda x: '%.3f' % x)
+
+        调整.几f 修改显示的小数位数
+
 
 
 三. 不 同 维 度 的 运 算 (Series 运算 DataFrame)

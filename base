@@ -104,6 +104,10 @@
 
         (3) 获取区间 object.columns[2:4]
 
+        修改 columns
+
+        object.columns=['','']
+
 
     <3> .values
 
